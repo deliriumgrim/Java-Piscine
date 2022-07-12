@@ -20,9 +20,9 @@ public class Transaction {
     private Integer amount;
 
     public Transaction(User sender, User recipient, Integer amount) {
-        setRecipient(recipient);
-        setSender(sender);
-        setAmount(amount);
+        this.recipient = recipient;
+        this.sender = sender;
+        this.amount = amount;
         this.identifier = UUID.randomUUID();
         if (amount >= 0) {
             this.type = Category.DEBIT;
@@ -51,16 +51,8 @@ public class Transaction {
         return recipient;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
-    }
-
     public User getSender() {
         return sender;
-    }
-
-    public void setSender(User sender) {
-        this.sender = sender;
     }
 
     public Category getType() {
@@ -71,7 +63,4 @@ public class Transaction {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
 }
