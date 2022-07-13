@@ -32,11 +32,11 @@ public class Program {
         System.out.println("");
         Transaction[] mass = a.getTransactionsList().transformIntoArray();
         UUID id_trans = mass[0].getIdentifier();
-        a.getTransactionsList().removeTransaction(id_trans);
+        service.removingTransaction(a.getIdentifier(), id_trans);
         System.out.println("Removed trans ID from A " + id_trans);
         mass = c.getTransactionsList().transformIntoArray();
         id_trans = mass[0].getIdentifier();
-        c.getTransactionsList().removeTransaction(id_trans);
+        service.removingTransaction(c.getIdentifier(), id_trans);
         System.out.println("Removed trans ID from C " + id_trans);
         System.out.println("");
         System.out.println("Unpair transactions");

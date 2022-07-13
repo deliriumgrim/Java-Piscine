@@ -42,6 +42,10 @@ public class TransactionsService {
         return user.getTransactionsList().transformIntoArray();
     }
 
+    public void removingTransaction(Integer idUser, UUID idTransaction) throws UserNotFoundException, TransactionNotFoundException {
+       usersList.retrieveUserById(idUser).getTransactionsList().removeTransaction(idTransaction);
+    }
+
     public Transaction[] getUnpairTransactions() {
         Integer k;
         TransactionsList unpairedTransactions = new TransactionsLinkedList();
