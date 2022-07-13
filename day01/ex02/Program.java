@@ -1,7 +1,7 @@
 package ex02;
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserNotFoundException {
         UsersArrayList list = new UsersArrayList();
 
         System.out.println("num of users: " + list.retrieveNumbersOfUsers());
@@ -21,15 +21,8 @@ public class Program {
         list.addUser(new User("Mike", 200));
         System.out.println("num of users: " + list.retrieveNumbersOfUsers());
         System.out.println("Capacity " + list.getCapacity());
-        try {
-            System.out.println(list.retrieveUserByIndex(-10).getName());
-        } catch (ArrayIndexOutOfBoundsException e) {
-           System.out.println("Exception: User not found (index)");
-        }
-        try {
-            System.out.println(list.retrieveUserById(3).getName());
-        } catch (UserNotFoundException e) {
-            System.out.println("Exception: User not found (id)");
-        }
+        System.out.println(list.retrieveUserByIndex(-10).getName());
+        System.out.println(list.retrieveUserById(3).getName());
+
     }
 }
