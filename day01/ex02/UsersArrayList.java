@@ -1,5 +1,3 @@
-package ex02;
-
 public class UsersArrayList implements UsersList {
 
     private final Integer DEFAULT_CAPACITY = 10;

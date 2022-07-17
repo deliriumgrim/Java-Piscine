@@ -1,6 +1,5 @@
-package ex03;
-
 import java.util.UUID;
+
 public class Transaction {
 
     private UUID identifier;

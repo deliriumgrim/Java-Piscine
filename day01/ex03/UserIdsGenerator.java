@@ -1,5 +1,3 @@
-package ex03;
-
 public class UserIdsGenerator {
 
     private static Integer id = 0;

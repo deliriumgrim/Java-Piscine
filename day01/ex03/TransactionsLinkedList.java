@@ -1,5 +1,3 @@
-package ex03;
-
 import java.util.UUID;
 
 public class TransactionsLinkedList implements TransactionsList {

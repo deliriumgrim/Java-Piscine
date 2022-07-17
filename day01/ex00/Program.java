@@ -1,5 +1,3 @@
-package ex00;
-
 public class Program {
     public static void main(String[] args) {
         User userFirst = new User("First", 1000);

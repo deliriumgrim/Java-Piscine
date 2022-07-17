@@ -1,5 +1,3 @@
-package ex02;
-
 public class Program {
     public static void main(String[] args) throws UserNotFoundException {
         UsersArrayList list = new UsersArrayList();
