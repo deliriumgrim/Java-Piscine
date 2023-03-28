@@ -2,65 +2,50 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         int week = 1;
         int count = 1;
         long grades = 0;
-        long finalGrade;
         int minValueWeek;
 
-        String stop = "42";
-        String weekText = "Week ";
-        Scanner scanner = new Scanner(System.in);
-        String stringWeek = scanner.nextLine();
-
-        while (week <= 18 && !stringWeek.equals(stop)) {
-            if(!stringWeek.equals(weekText + week)) {
-                error();
+        String line = scanner.nextLine();
+        while (week <= 18 && !line.equals("42")) {
+            if (!line.equals("Week " + week)) {
+                error(scanner);
             }
             minValueWeek = getMin(scanner);
-            grades = collectGrade(minValueWeek, grades, week);
+            grades = collectGrades(minValueWeek, grades, week);
             week++;
             if (week == 19) {
-                System.out.println();
-                break ;
+                break;
             }
-            stringWeek = scanner.nextLine();
-            if (stringWeek.equals(stop)) {
-                System.out.println();
-            }
+            line = scanner.nextLine();
         }
         while (count < week) {
-            finalGrade = unpackGrade(grades, count);
-            drawGrade(finalGrade, count);
+            drawGrades(unpackGrade(grades, count), count);
             count++;
         }
-        System.exit(0);
+        scanner.close();
     }
-    private static void drawGrade(long finalGrade, int week) {
-        int count = 0;
 
-        System.out.println("Week " + week);
-        while (count < finalGrade) {
+    private static long unpackGrade(long grades, int count) {
+        while (count != 1) {
+            grades /= 10;
+            count--;
+        }
+        return grades % 10;
+    }
+
+    private static void drawGrades(long finalGrade, int week) {
+        System.out.print("Week " + week + " ");
+        while (finalGrade != 0) {
             System.out.print("=");
-            count++;
+            finalGrade--;
         }
         System.out.println(">");
     }
-    private static long unpackGrade(long grades, int week) {
-        long res;
-        long tmp;
-        int count = 1;
 
-        tmp = grades;
-        while (count < week) {
-            tmp /= 10;
-            count++;
-        }
-        res = tmp % 10;
-        return (res);
-    }
-    private static long collectGrade(int minValueGrade, long grades, int week) {
-        long res;
+    private static long collectGrades(int minValueWeek, long grades, int week) {
         long pow = 1;
         int count = 1;
 
@@ -68,23 +53,23 @@ public class Program {
             pow *= 10;
             count++;
         }
-        res = grades + (minValueGrade * pow);
-        return (res);
+        return (grades + minValueWeek * pow);
     }
-    private static int  getMin(Scanner scanner) {
-        int min = scanner.nextInt();
-        int current;
+
+    private static int getMin(Scanner scanner) {
+        int current, min;
         int count = 0;
 
-        if (min > 9 || min < 1) {
-            error();
-        }
-        while (count < 4) {
+        min = 0;
+        while (count < 5) {
             current = scanner.nextInt();
             if (current > 9 || current < 1) {
-                error();
+                error(scanner);
             }
-            if (min > current) {
+            if (count == 0) {
+                min = current;
+            }
+            else if (current < min) {
                 min = current;
             }
             count++;
@@ -92,8 +77,10 @@ public class Program {
         scanner.nextLine();
         return (min);
     }
-    private static void error() {
+
+    private static void error(Scanner scanner) {
         System.err.println("Illegal argument");
+        scanner.close();
         System.exit(-1);
     }
 }
