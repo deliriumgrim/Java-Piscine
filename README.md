@@ -1,3 +1,3 @@
 # Java-Piscine
 
-A 14-day long intensive course covering topics from Java Core (including, Collections, JDBC and Multi-Threading) to Spring.
+Интенсив, продолжительностью 14 дней, охватывающий темы от Java Core (включая Collections, JDBC) до Spring.
